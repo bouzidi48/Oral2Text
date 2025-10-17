@@ -1,0 +1,146 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix o2t: <https://raw.githubusercontent.com/bouzidi48/Oral2Text/main/assets/vocab#> .
+
+<https://raw.githubusercontent.com/bouzidi48/Oral2Text/main/assets/vocab>
+    a owl:Ontology ;
+    rdfs:label "Vocabulaire Oral2Text"@fr ;
+    dcterms:creator "Mohammed Bouzidi Idirissi"@fr ;
+    dcterms:description "Vocabulaire RDF/Turtle du projet Oral2Text — plateforme de transcription et traduction d’audios culturels et linguistiques."@fr ;
+    dcterms:issued "2025-10-17"^^xsd:date ;
+    owl:versionInfo "1.0" .
+
+####################################################
+# CLASSES
+####################################################
+
+o2t:Utilisateur a rdfs:Class ;
+    rdfs:label "Utilisateur"@fr ;
+    rdfs:comment "Personne utilisant Oral2Text pour téléverser, transcrire ou traduire des audios."@fr .
+
+o2t:Audio a rdfs:Class ;
+    rdfs:label "Audio"@fr ;
+    rdfs:comment "Fichier audio téléversé par un utilisateur."@fr .
+
+o2t:Transcription a rdfs:Class ;
+    rdfs:label "Transcription"@fr ;
+    rdfs:comment "Texte généré à partir d’un fichier audio."@fr .
+
+o2t:Traduction a rdfs:Class ;
+    rdfs:label "Traduction"@fr ;
+    rdfs:comment "Version traduite d’une transcription dans une autre langue."@fr .
+
+####################################################
+# PROPRIÉTÉS DES CLASSES
+####################################################
+
+# ----- UTILISATEUR -----
+o2t:idUtilisateur a rdf:Property ;
+    rdfs:label "Identifiant utilisateur"@fr ;
+    rdfs:domain o2t:Utilisateur ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Identifiant unique de l’utilisateur."@fr .
+
+o2t:nom a rdf:Property ;
+    rdfs:label "Nom"@fr ;
+    rdfs:domain o2t:Utilisateur ;
+    rdfs:range rdfs:Literal ;
+    rdfs:comment "Nom complet de l’utilisateur."@fr .
+
+o2t:email a rdf:Property ;
+    rdfs:label "Email"@fr ;
+    rdfs:domain o2t:Utilisateur ;
+    rdfs:range rdfs:Literal ;
+    rdfs:comment "Adresse email de l’utilisateur."@fr .
+
+o2t:role a rdf:Property ;
+    rdfs:label "Rôle"@fr ;
+    rdfs:domain o2t:Utilisateur ;
+    rdfs:range rdfs:Literal ;
+    rdfs:comment "Rôle de l’utilisateur (étudiant, chercheur, admin...)."@fr .
+
+# ----- AUDIO -----
+o2t:idAudio a rdf:Property ;
+    rdfs:label "Identifiant audio"@fr ;
+    rdfs:domain o2t:Audio ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Identifiant unique de l’audio."@fr .
+
+o2t:titre a rdf:Property ;
+    rdfs:label "Titre"@fr ;
+    rdfs:domain o2t:Audio ;
+    rdfs:range rdfs:Literal ;
+    rdfs:comment "Titre du fichier audio."@fr .
+
+o2t:fichier a rdf:Property ;
+    rdfs:label "Fichier"@fr ;
+    rdfs:domain o2t:Audio ;
+    rdfs:range rdfs:Resource ;
+    rdfs:comment "Lien ou chemin du fichier audio."@fr .
+
+o2t:dateUpload a rdf:Property ;
+    rdfs:label "Date de téléversement"@fr ;
+    rdfs:domain o2t:Audio ;
+    rdfs:range xsd:date ;
+    rdfs:comment "Date à laquelle l’audio a été ajouté par l’utilisateur."@fr .
+
+o2t:aPourUtilisateur a rdf:Property ;
+    rdfs:label "Téléversé par"@fr ;
+    rdfs:domain o2t:Audio ;
+    rdfs:range o2t:Utilisateur ;
+    rdfs:comment "Utilisateur ayant téléversé l’audio."@fr .
+
+# ----- TRANSCRIPTION -----
+o2t:idTranscription a rdf:Property ;
+    rdfs:label "Identifiant transcription"@fr ;
+    rdfs:domain o2t:Transcription ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Identifiant unique de la transcription."@fr .
+
+o2t:contenuTranscription a rdf:Property ;
+    rdfs:label "Contenu"@fr ;
+    rdfs:domain o2t:Transcription ;
+    rdfs:range rdfs:Literal ;
+    rdfs:comment "Texte de la transcription générée à partir de l’audio."@fr .
+
+o2t:langueTranscription a rdf:Property ;
+    rdfs:label "Langue"@fr ;
+    rdfs:domain o2t:Transcription ;
+    rdfs:range rdfs:Literal ;
+    rdfs:comment "Langue utilisée pour la transcription."@fr .
+
+o2t:aPourAudio a rdf:Property ;
+    rdfs:label "Associe à l’audio"@fr ;
+    rdfs:domain o2t:Transcription ;
+    rdfs:range o2t:Audio ;
+    rdfs:comment "Audio auquel appartient cette transcription."@fr .
+
+# ----- TRADUCTION -----
+o2t:idTraduction a rdf:Property ;
+    rdfs:label "Identifiant traduction"@fr ;
+    rdfs:domain o2t:Traduction ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Identifiant unique de la traduction."@fr .
+
+o2t:contenuTraduction a rdf:Property ;
+    rdfs:label "Contenu"@fr ;
+    rdfs:domain o2t:Traduction ;
+    rdfs:range rdfs:Literal ;
+    rdfs:comment "Texte de la traduction d’une transcription."@fr .
+
+o2t:langueCible a rdf:Property ;
+    rdfs:label "Langue cible"@fr ;
+    rdfs:domain o2t:Traduction ;
+    rdfs:range rdfs:Literal ;
+    rdfs:comment "Langue dans laquelle la transcription a été traduite."@fr .
+
+o2t:aPourTranscription a rdf:Property ;
+    rdfs:label "Traduit depuis"@fr ;
+    rdfs:domain o2t:Traduction ;
+    rdfs:range o2t:Transcription ;
+    rdfs:comment "Transcription dont cette traduction est issue."@fr .
+
+
