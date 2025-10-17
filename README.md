@@ -100,9 +100,9 @@ erDiagram
         string langue_cible
         int transcription_id
     }
-
+```
 ## Prompt utilisé pour le diagramme
-###Chat OpenAI
+### Chat OpenAI
 
 J'aurais besoin que tu m'intègres un diagramme "entité-relation" correspondant à mon projet fait avec Mermaid. Voici mon projet :
 
