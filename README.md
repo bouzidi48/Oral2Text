@@ -100,3 +100,12 @@ erDiagram
         string langue_cible
         int transcription_id
     }
+
+## Prompt utilisé pour le diagramme
+###Chat OpenAI
+
+J'aurais besoin que tu m'intègres un diagramme "entité-relation" correspondant à mon projet fait avec Mermaid. Voici mon projet :
+
+🎤 **Oral2Text** est une plateforme web basée sur **Omeka S** qui permet d’archiver des fichiers audio (témoignages, interviews, patrimoine oral), de les **transcrire automatiquement en texte** via une API d’IA, et de **traduire** ces transcriptions dans la langue choisie par l’utilisateur. 
+
+Le projet utilise **HTML, CSS, JavaScript, PHP, MySQL, RDF/Turtle**, ainsi que des **API REST** pour la transcription et la traduction. Il s’adresse aux **étudiants, chercheurs, touristes et communautés locales** pour faciliter la **préservation et la diffusion multilingue** du patrimoine oral.
