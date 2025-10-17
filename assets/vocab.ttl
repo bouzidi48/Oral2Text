@@ -5,7 +5,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix o2t: <https://raw.githubusercontent.com/bouzidi48/Oral2Text/main/assets/vocab#> .
 
-<https://raw.githubusercontent.com/bouzidi48/Oral2Text/main/assets/vocab>
+<https://raw.githubusercontent.com/bouzidi48/Oral2Text/main/assets/vocab.ttl>
     a owl:Ontology ;
     rdfs:label "Vocabulaire Oral2Text"@fr ;
     dcterms:creator "Mohammed Bouzidi Idirissi"@fr ;
